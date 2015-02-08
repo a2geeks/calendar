@@ -4,9 +4,12 @@
 # Ryan Burns
 #
 
+import os
 import logging
 from argparse import ArgumentParser
 from pprint import pprint, pformat
+
+from happenings import gcal
 
 try:
     import yaml
@@ -16,12 +19,13 @@ except ImportError:
     sys.exit(1)
 
 
-
-
 def main(args):
-    with open(args.yaml_fn, 'r') as f:
-        conf = yaml.load(f)
-    logging.debug(pformat(conf))
+
+    gcal.load_api_key()
+
+#    with open(args.yaml_fn, 'r') as f:
+#        conf = yaml.load(f)
+#    logging.debug(pformat(conf))
 
 
 
@@ -32,9 +36,11 @@ if __name__ == '__main__':
                       help="Will not publish anything.")
     args = parser.parse_args()
 
+    main(args)
+
     root = logging.getLogger()
     root.setLevel(logging.INFO)
 
-    fh = logging.FileHandler('pdfsorter.log')
+    fh = logging.FileHandler('happenings.log')
     fh.setLevel(logging.DEBUG)
     root.addHandler(fh)
