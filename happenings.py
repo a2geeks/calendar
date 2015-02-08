@@ -10,6 +10,7 @@ from argparse import ArgumentParser
 from pprint import pprint, pformat
 
 from happenings import gcal
+from happenings import ical
 
 try:
     import yaml
@@ -21,7 +22,8 @@ except ImportError:
 
 def main(args):
 
-    gcal.get_calendar()
+#    gcal.get_calendar()
+    ical.test()
 
 
 #    with open(args.yaml_fn, 'r') as f:
