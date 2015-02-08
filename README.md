@@ -1,5 +1,5 @@
-# calendar
-Calendar Automation For A2Geeks.
+# Happenings
+Event Notification Automation For A2Geeks.
 
 This repo will contain scripts which take data from the events@a2geeks.org calendar and push it to various targetted publishing platforms.
 
