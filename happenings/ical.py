@@ -3,6 +3,13 @@
 from icalendar import Calendar, Event
 import urllib2
 
+try:
+    import pytz
+except ImportError:
+    print "Requires pytz"
+    print "pip install pytz"
+    sys.exit(1)
+
 
 
 def test():
@@ -14,7 +21,11 @@ def test():
     cal = Calendar.from_ical(data)
 
     for event in cal.walk('vevent'):
-        date = event.vevent.dtstart.value
-        desc = event.vevent.description.value
-        print date
+        date = event.get('dtstart').dt.astimezone(pytz.timezone('America/Detroit'))
+        desc = event.get('description')
+        summary = event.get('summary')
+        location = event.get('location')
+        print summary
         print desc
+        print date
+        print location
