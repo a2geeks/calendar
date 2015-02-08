@@ -29,3 +29,5 @@ def get_api_key_from_env():
 def get_calendar():
     api_key = get_api_key_from_env()
     cal = build('calendar', 'v3', developerKey=api_key)
+
+    print cal.calendarList().list().execute()
