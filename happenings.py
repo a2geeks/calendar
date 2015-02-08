@@ -21,7 +21,8 @@ except ImportError:
 
 def main(args):
 
-    gcal.load_api_key()
+    gcal.get_calendar()
+
 
 #    with open(args.yaml_fn, 'r') as f:
 #        conf = yaml.load(f)
