@@ -14,4 +14,7 @@ def test():
     cal = Calendar.from_ical(data)
 
     for event in cal.walk('vevent'):
-        print event
+        date = event.vevent.dtstart.value
+        desc = event.vevent.description.value
+        print date
+        print desc
