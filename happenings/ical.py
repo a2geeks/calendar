@@ -1,4 +1,6 @@
-
+#
+# Ryan Burns
+#
 
 from icalendar import Calendar, Event
 import urllib2

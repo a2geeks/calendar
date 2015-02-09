@@ -9,8 +9,8 @@ import logging
 from argparse import ArgumentParser
 from pprint import pprint, pformat
 
-from happenings import gcal
 from happenings import ical
+from happenings import tweet
 
 try:
     import yaml
@@ -22,14 +22,15 @@ except ImportError:
 
 def main(args):
 
-#    gcal.get_calendar()
+    with open(args.yaml_fn, 'r') as f:
+        conf = yaml.load(f)
+    logging.debug(pformat(conf))
+
     ical.test()
 
-
-#    with open(args.yaml_fn, 'r') as f:
-#        conf = yaml.load(f)
-#    logging.debug(pformat(conf))
-
+    print conf['sites']
+    twitter_conf =  conf['sites']['twitter']
+    tweet.test(twitter_conf['consumer_key'], twitter_conf['consumer_secret'])
 
 
 if __name__ == '__main__':
